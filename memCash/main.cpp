@@ -2,10 +2,11 @@
 #include <stdint.h>
 #import <vector>
 #import <cstdlib>
+#import <ctime>
 
 
 using namespace std;
-int64_t LIST_SIZE = 10;
+int64_t LIST_SIZE = 100000;
 struct list {
 	list *next;
 	int64_t data;
@@ -89,8 +90,16 @@ for(int64_t i = 0; i < LIST_SIZE; i++){
 }
 }
 
+void go_away(list* random_list){
+    while (random_list) {
+        random_list = random_list->next;
+    }
+}
+
 int main()
-{   list* first_elemet;
+{
+
+    list* first_elemet;
     first_elemet = create_the_first_element();
     create_lists(first_elemet, LIST_SIZE);
 
@@ -115,16 +124,15 @@ int main()
 
     create_beginer_list(pointer_array, random_index_array, beginer_list);
 
-    print_list(beginer_list);
+    unsigned int start_time =  clock();
+    go_away(beginer_list);
+    unsigned int end_time =  clock();
+    unsigned int diff = start_time - end_time; //mseconds
+    cout << endl << diff << endl << start_time <<endl<< end_time;
+    //print_list(beginer_list);
+
     //print_list(first_elemet);
 
-
-
-
-
-
-    //cout << random_array[i] << endl;
-    //cout << sizeof(int64_t)<< endl << sizeof(*first_elemet)<<endl<<sizeof(first_elemet->data)<<endl << sizeof(first_elemet->next);
 
     return 0;
 }
