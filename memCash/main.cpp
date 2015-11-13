@@ -6,7 +6,7 @@
 
 
 using namespace std;
-int64_t LIST_SIZE = 100000;
+int64_t LIST_SIZE = 1000;
 struct list {
 	list *next;
 	int64_t data;
@@ -127,8 +127,9 @@ int main()
     unsigned int start_time =  clock();
     go_away(beginer_list);
     unsigned int end_time =  clock();
-    unsigned int diff = start_time - end_time; //mseconds
+    unsigned int diff = end_time - start_time; //mseconds
     cout << endl << diff << endl << start_time <<endl<< end_time;
+    //cout<< endl << sizeof(beginer_list->data);
     //print_list(beginer_list);
 
     //print_list(first_elemet);
