@@ -36,14 +36,13 @@ void create_lists (list *first, int64_t count) {
 
 void print_list(list *my_list) {
     while (my_list) {
-        cout << my_list << endl;
+        cout << my_list->data << endl;
         my_list = my_list->next;
     }
 }
 
 void create_pointer_array(vector<list*> &pointer_array, list* first_element) {
        while (first_element) {
-          //cout<<endl<<endl<<first_element<<endl<<endl;
           pointer_array.push_back(first_element);
           first_element = first_element->next;
        }
@@ -73,11 +72,14 @@ for(int64_t i = 0; i < LIST_SIZE; i++){
 }
 }
 
-void create_beginer_list(vector<list*> pointer_array, int64_t* random_index_array, list* beginer_list){
-for(int64_t i = 0; i < LIST_SIZE; i++) {
-    beginer_list->next = pointer_array[ random_index_array[i] ];
-    beginer_list = beginer_list->next;
-    beginer_list->next = NULL;
+void create_beginer_list(vector<list*> pointer_array, int64_t* random_index_array, list* first){
+list *after_first;
+after_first = first;
+
+for(int64_t i = 1; i < LIST_SIZE; i++) {
+    after_first->next = pointer_array[ random_index_array[i] ];
+    after_first = after_first->next;
+    after_first->next = NULL;
 }
 }
 
@@ -91,12 +93,9 @@ int main()
 {   list* first_elemet;
     first_elemet = create_the_first_element();
     create_lists(first_elemet, LIST_SIZE);
-    //cout<<first_elemet<<endl;
-    print_list(first_elemet);
-    cout << endl;
-    //sizeof(list*) pointer_array[10];
-    //create_pointer_array(pointer_array, first_elemet, LIST_SIZE);
-    //print_pointer_array(pointer_array, LIST_SIZE);
+
+    //print_list(first_elemet);
+    //cout << endl;
 
 
     vector<list*> pointer_array;
@@ -104,17 +103,19 @@ int main()
     //print_vector(pointer_array);
     //print_list(first_elemet);
 
-    //cout << "Hello world!" << endl << pointer_array.size();
-
     int64_t random_index_array[LIST_SIZE];
     create_simple_random_array(random_index_array);
-    //print_list(first_elemet);
     //print_random_array(random_index_array);
 
-    //print_list(first_elemet);
 
-    create_beginer_list(pointer_array, random_index_array, first_elemet);
-    print_list(first_elemet);
+    list* beginer_list;
+    beginer_list = pointer_array[random_index_array[0]];
+    beginer_list->next = NULL;
+
+
+    create_beginer_list(pointer_array, random_index_array, beginer_list);
+
+    print_list(beginer_list);
     //print_list(first_elemet);
 
 

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1447420167 source:/home/vasiliy/PycharmProjects/HL/MamCash/memCash/main.cpp
+1447423825 source:/home/vasiliy/PycharmProjects/HL/MamCash/memCash/main.cpp
 	<iostream>
 	<stdint.h>
 
