@@ -43,6 +43,7 @@ void print_list(list *my_list) {
 
 void create_pointer_array(vector<list*> &pointer_array, list* first_element) {
        while (first_element) {
+          //cout<<endl<<endl<<first_element<<endl<<endl;
           pointer_array.push_back(first_element);
           first_element = first_element->next;
        }
@@ -74,10 +75,16 @@ for(int64_t i = 0; i < LIST_SIZE; i++){
 
 void create_beginer_list(vector<list*> pointer_array, int64_t* random_index_array, list* beginer_list){
 for(int64_t i = 0; i < LIST_SIZE; i++) {
-    beginer_list = pointer_array[ random_index_array[i] ];
+    beginer_list->next = pointer_array[ random_index_array[i] ];
     beginer_list = beginer_list->next;
+    beginer_list->next = NULL;
 }
-beginer_list->next = NULL;
+}
+
+void print_vector(vector<list*> pointer_array){
+for(int64_t i = 0; i < LIST_SIZE; i++){
+    cout << pointer_array[i] << endl;
+}
 }
 
 int main()
@@ -85,7 +92,8 @@ int main()
     first_elemet = create_the_first_element();
     create_lists(first_elemet, LIST_SIZE);
     //cout<<first_elemet<<endl;
-    //print_list(first_elemet);
+    print_list(first_elemet);
+    cout << endl;
     //sizeof(list*) pointer_array[10];
     //create_pointer_array(pointer_array, first_elemet, LIST_SIZE);
     //print_pointer_array(pointer_array, LIST_SIZE);
@@ -93,6 +101,7 @@ int main()
 
     vector<list*> pointer_array;
     create_pointer_array(pointer_array, first_elemet);
+    //print_vector(pointer_array);
     //print_list(first_elemet);
 
     //cout << "Hello world!" << endl << pointer_array.size();
@@ -105,7 +114,7 @@ int main()
     //print_list(first_elemet);
 
     create_beginer_list(pointer_array, random_index_array, first_elemet);
-    //print_list(first_elemet);
+    print_list(first_elemet);
     //print_list(first_elemet);
 
 
