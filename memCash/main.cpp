@@ -6,7 +6,7 @@
 
 
 using namespace std;
-int64_t LIST_SIZE = 1000;
+int64_t LIST_SIZE = 4000;
 struct list {
 	list *next;
 	int64_t data;
